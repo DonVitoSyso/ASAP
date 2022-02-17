@@ -16,4 +16,4 @@ counting_prime_numbers(col+2, worksheet)
 # Пройдемся по столбцу 4 и посчитаем числа меньше 0.5
 counting_number_less(col+3, worksheet, 0.5)
 # Пройдемся по столбцу 5 и посчитаем число вторников
-counting_Tuesdays(col+4, worksheet, 0.5)
+counting_Tuesdays(col+4, worksheet, 'Thu')

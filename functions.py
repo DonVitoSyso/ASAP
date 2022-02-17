@@ -52,5 +52,13 @@ def counting_number_less(col, worksheet, number):
 
 
 # Счетчик вторников
-def counting_Tuesdays(col, worksheet, number):
-    pass
+def counting_Tuesdays(col, worksheet, day_week):
+    # Инициализируем счетчик
+    count = 0
+
+    for cell in worksheet.col(col):
+        # Берем первое значение из ячейки (название дня недели)
+        if day_week == cell.value.split()[0]:
+            count += 1
+
+    print(f'Ответ на вопрос: {worksheet.cell_value(1, col)}', count)
