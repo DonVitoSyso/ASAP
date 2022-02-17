@@ -52,13 +52,23 @@ def counting_number_less(col, worksheet, number):
 
 
 # Счетчик вторников
-def counting_Tuesdays(col, worksheet, day_week):
+def counting_Tuesdays(col, worksheet, day_week=None):
     # Инициализируем счетчик
     count = 0
-
-    for cell in worksheet.col(col):
-        # Берем первое значение из ячейки (название дня недели)
-        if day_week == cell.value.split()[0]:
-            count += 1
+    # Проверяем есть ли название столбца
+    if day_week != None:
+        for cell in worksheet.col(col):
+            # Берем первое значение из ячейки (название дня недели)
+            if day_week == cell.value.split()[0]:
+                count += 1
+    else:
+        for cell in worksheet.col(col):
+            try:
+                # Берем первое значение из ячейки разделяем на год-месяц-день
+                data = cell.value.split()[0].split('-')
+                if day_of_week(data[2], data[1], data[0]) == 'Tue':
+                    print("Year", data[0])
+            except ValueError:
+                pass
 
     print(f'Ответ на вопрос: {worksheet.cell_value(1, col)}', count)
