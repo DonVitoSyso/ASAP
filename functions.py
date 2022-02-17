@@ -46,8 +46,11 @@ def counting_number_less(col, worksheet, number):
             if float(cell.value) < number:
                 count += 1
         except ValueError:
-            print("Enter!!!", count)
             pass
 
     print(f'Ответ на вопрос: {worksheet.cell_value(1, col)}', count)
 
+
+# Счетчик вторников
+def counting_Tuesdays(col, worksheet, number):
+    pass
