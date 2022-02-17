@@ -33,6 +33,21 @@ def counting_prime_numbers(col, worksheet):
 
 
 # Счетчик чисел меньше чем заданное
-def number_less(col, worksheet, number):
-    ...
+def counting_number_less(col, worksheet, number):
+    # Инициализируем счетчик
+    count = 0
+
+    for cell in worksheet.col(col):
+        try:
+            # Избавимся от всех пробелов в строках-числах
+            cell.value = "".join(cell.value.split())
+            # Приведем все числа к общему формату - через "."
+            cell.value = ".".join(cell.value.split(','))
+            if float(cell.value) < number:
+                count += 1
+        except ValueError:
+            print("Enter!!!", count)
+            pass
+
+    print(f'Ответ на вопрос: {worksheet.cell_value(1, col)}', count)
 

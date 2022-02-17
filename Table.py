@@ -10,3 +10,5 @@ worksheet = workbook.sheet_by_index(1)
 counting_even_numbers(1, worksheet)
 # Пройдемся по столбцу 3 и посчитаем простые числа
 counting_prime_numbers(2, worksheet)
+# Пройдемся по столбцу 3 и посчитаем числа меньше 0.5
+counting_number_less(3, worksheet, 0.5)
