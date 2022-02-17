@@ -30,3 +30,9 @@ def counting_prime_numbers(col, worksheet):
             pass
 
     print(f'Ответ на вопрос: {worksheet.cell_value(1, col)}', count)
+
+
+# Счетчик чисел меньше чем заданное
+def number_less(col, worksheet, number):
+    ...
+
