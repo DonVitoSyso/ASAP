@@ -99,10 +99,13 @@ def counting_last_Tuesdays(col, worksheet):
             # Преобразуем дату в iso формат
             date_ = f'{date[2]}-{date[0]}-{date[1]}'
             if day_of_week2(date_) == 'Tuesday':
+                # Проверяем есть ли дальше вторник
                 date[1] = int(date[1]) + 7
+                # Приводим день к формату ДД
                 if not(date[1]//10):
                     date[1] = '0' + str(date[1])
                 date_ = f'{date[2]}-{date[0]}-{date[1]}'
+                # Проверяем есть ли дальше вторник
                 if day_of_week2(date_) != 'Tuesday':
                     count += 1
         except IndexError:

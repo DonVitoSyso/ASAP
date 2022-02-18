@@ -21,5 +21,5 @@ counting_Tuesdays(col+4, worksheet, 'Thu')
 counting_Tuesdays(col+5, worksheet)
 # Пройдемся по столбцу 6 и посчитаем число вторников вариант 2
 counting_Tuesdays2(col+5, worksheet)
-# Пройдемся по столбцу 7 и посчитаем число вторников последних вторников
+# Пройдемся по столбцу 7 и посчитаем число вторников последних вторников вариант 2
 counting_last_Tuesdays(col+6, worksheet)
