@@ -74,6 +74,7 @@ def counting_Tuesdays(col, worksheet, day_week=None):
     print(f'Ответ на вопрос: {worksheet.cell_value(1, col)} ({worksheet.cell_value(0, col)})', count)
 
 
+# Счетчик вторников черз datetime и calendar
 def counting_Tuesdays2(col, worksheet):
     # Инициализируем счетчик
     count = 0
@@ -85,3 +86,8 @@ def counting_Tuesdays2(col, worksheet):
             count += 1
 
     print(f'Ответ на вопрос: {worksheet.cell_value(1, col)} ({worksheet.cell_value(0, col)})', count)
+
+
+
+def counting_last_Tuesdays(col, worksheet):
+    pass
