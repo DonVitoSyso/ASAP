@@ -80,9 +80,8 @@ def counting_Tuesdays2(col, worksheet):
     count = 0
 
     for cell in worksheet.col(col):
-        # Берем первое значение из ячейки разделяем на год-месяц-день
-        date = cell.value.split()[0].split(' ')
-        if day_of_week2(date[0]) == 'Tuesday':
+        date = cell.value.split()[0]
+        if day_of_week2(date) == 'Tuesday':
             count += 1
 
     print(f'Ответ на вопрос: {worksheet.cell_value(1, col)} ({worksheet.cell_value(0, col)})', count)
@@ -90,4 +89,23 @@ def counting_Tuesdays2(col, worksheet):
 
 
 def counting_last_Tuesdays(col, worksheet):
-    pass
+    # Инициализируем счетчик
+    count = 0
+
+    for cell in worksheet.col(col):
+        try:
+            # Берем первое значение из ячейки разделяем на год-месяц-день
+            date = cell.value.split()[0].split('-')
+            # Преобразуем дату в iso формат
+            date_ = f'{date[2]}-{date[0]}-{date[1]}'
+            if day_of_week2(date_) == 'Tuesday':
+                date[1] = int(date[1]) + 7
+                if not(date[1]//10):
+                    date[1] = '0' + str(date[1])
+                date_ = f'{date[2]}-{date[0]}-{date[1]}'
+                if day_of_week2(date_) != 'Tuesday':
+                    count += 1
+        except IndexError:
+            pass
+
+    print(f'Ответ на вопрос: {worksheet.cell_value(1, col)} ({worksheet.cell_value(0, col)})', count)
