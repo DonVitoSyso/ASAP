@@ -1,3 +1,7 @@
+from datetime import date
+import calendar
+
+
 # Прописываем статические значения кода месяца для каждого месяца
 code_month = {
     1: 1, 2: 4, 3: 4, 4: 0,
@@ -33,6 +37,11 @@ def leap_year(year):
 # Определение дня недели
 # Формула взята с ресурса https://lifehacker.ru/kakoj-den-nedeli/
 def day_of_week(day, month, year):
+    # Переведем все в тип int
+    day = int(day)
+    month = int(month)
+    year = int(year)
+
     # У года берем только последние 2 числа
     last_digit = int(str(year)[-2:])
     # Определяем высокосный год. Высчитываем только 2 первых мес
@@ -45,5 +54,10 @@ def day_of_week(day, month, year):
         code_year = (6 + last_digit + int(last_digit / 4)) % 7
     return week[(day + code_month[month] + code_year) % 7]
 
-print(day_of_week(15, 2, 2022))
-
+# Второй вариант расчета даты
+def day_of_week2(date_):
+    try:
+        my_date = date.fromisoformat(date_)
+        return calendar.day_name[my_date.weekday()]
+    except ValueError:
+        pass

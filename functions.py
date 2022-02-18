@@ -65,11 +65,23 @@ def counting_Tuesdays(col, worksheet, day_week=None):
         for cell in worksheet.col(col):
             try:
                 # Берем первое значение из ячейки разделяем на год-месяц-день
-                data = cell.value.split()[0].split('-')
-                print(day_of_week(data[2], data[1], data[0]))
-                if day_of_week(data[2], data[1], data[0]) == 'Tue':
-                    print("Year", data[0])
-            except ValueError:
+                date = cell.value.split()[0].split('-')
+                if day_of_week(date[2], date[1], date[0]) == 'Tue':
+                    count += 1
+            except IndexError:
                 pass
 
-    print(f'Ответ на вопрос: {worksheet.cell_value(1, col)}', count)
+    print(f'Ответ на вопрос: {worksheet.cell_value(1, col)} ({worksheet.cell_value(0, col)})', count)
+
+
+def counting_Tuesdays2(col, worksheet):
+    # Инициализируем счетчик
+    count = 0
+
+    for cell in worksheet.col(col):
+        # Берем первое значение из ячейки разделяем на год-месяц-день
+        date = cell.value.split()[0].split(' ')
+        if day_of_week2(date[0]) == 'Tuesday':
+            count += 1
+
+    print(f'Ответ на вопрос: {worksheet.cell_value(1, col)} ({worksheet.cell_value(0, col)})', count)

@@ -19,3 +19,5 @@ counting_number_less(col+3, worksheet, 0.5)
 counting_Tuesdays(col+4, worksheet, 'Thu')
 # Пройдемся по столбцу 6 и посчитаем число вторников
 counting_Tuesdays(col+5, worksheet)
+# Пройдемся по столбцу 6 и посчитаем число вторников вариант 2
+counting_Tuesdays2(col+5, worksheet)
