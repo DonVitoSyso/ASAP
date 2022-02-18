@@ -66,6 +66,7 @@ def counting_Tuesdays(col, worksheet, day_week=None):
             try:
                 # Берем первое значение из ячейки разделяем на год-месяц-день
                 data = cell.value.split()[0].split('-')
+                print(day_of_week(data[2], data[1], data[0]))
                 if day_of_week(data[2], data[1], data[0]) == 'Tue':
                     print("Year", data[0])
             except ValueError:
