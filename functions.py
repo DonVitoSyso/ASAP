@@ -87,7 +87,7 @@ def counting_Tuesdays2(col, worksheet):
     print(f'Ответ на вопрос: {worksheet.cell_value(1, col)} ({worksheet.cell_value(0, col)})', count)
 
 
-
+# Счетчик последних вторников
 def counting_last_Tuesdays(col, worksheet):
     # Инициализируем счетчик
     count = 0
@@ -99,13 +99,40 @@ def counting_last_Tuesdays(col, worksheet):
             # Преобразуем дату в iso формат
             date_ = f'{date[2]}-{date[0]}-{date[1]}'
             if day_of_week2(date_) == 'Tuesday':
-                # Проверяем есть ли дальше вторник
+                # Прибовляем еще 7 дней
+                date[1] = int(date[1]) + 7
+                # Приводим день к формату ДД
+                if not (date[1] // 10):
+                    date[1] = '0' + str(date[1])
+                date_ = f'{date[2]}-{date[0]}-{date[1]}'
+                # Проверка следующий вторник или нет
+                if day_of_week2(date_) != 'Tuesday':
+                    count += 1
+        except IndexError:
+            pass
+
+    print(f'Ответ на вопрос: {worksheet.cell_value(1, col)} ({worksheet.cell_value(0, col)})', count)
+    
+
+# Счетчик последних вторников вариант 2
+def counting_last_Tuesdays2(col, worksheet):
+    # Инициализируем счетчик
+    count = 0
+
+    for cell in worksheet.col(col):
+        try:
+            # Берем первое значение из ячейки разделяем на год-месяц-день
+            date = cell.value.split()[0].split('-')
+            # Преобразуем дату в iso формат
+            date_ = f'{date[2]}-{date[0]}-{date[1]}'
+            if day_of_week2(date_) == 'Tuesday':
+                # Прибовляем еще 7 дней
                 date[1] = int(date[1]) + 7
                 # Приводим день к формату ДД
                 if not(date[1]//10):
                     date[1] = '0' + str(date[1])
                 date_ = f'{date[2]}-{date[0]}-{date[1]}'
-                # Проверяем есть ли дальше вторник
+                # Проверка следующий вторник или нет
                 if day_of_week2(date_) != 'Tuesday':
                     count += 1
         except IndexError:
