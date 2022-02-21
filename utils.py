@@ -34,6 +34,19 @@ def leap_year(year):
     else:
         return False
 
+
+def num_day_month(day, month, year):
+    # Количество дней в месяце
+    num_days = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+    # Делаем корректировку февраля на -1, если високосный год
+    if leap_year(year):
+        day -= 1
+    if num_days[month-1] <= day:
+        print(day, month, year)
+        return True
+    else:
+        return False
+
 # Определение дня недели
 # Формула взята с ресурса https://lifehacker.ru/kakoj-den-nedeli/
 def day_of_week(day, month, year):
@@ -42,15 +55,18 @@ def day_of_week(day, month, year):
     month = int(month)
     year = int(year)
 
+    # Проверка на количество дней в неделю
+    # if num_day_month(day, month, year):
+    #     return False
     # У года берем только последние 2 числа
     last_digit = int(str(year)[-2:])
     # Определяем высокосный год. Высчитываем только 2 первых мес
     # С вычетом еденицы (корректировка на высокосный год)
     if leap_year(year) and (month == 1 or month == 2):
-        # Формула для определения дня недел
+        # Формула для определения дня недели
         code_year = (5 + last_digit + int(last_digit / 4)) % 7
     else:
-        # Формула для определения дня недел
+        # Формула для определения дня недели
         code_year = (6 + last_digit + int(last_digit / 4)) % 7
     return week[(day + code_month[month] + code_year) % 7]
 
