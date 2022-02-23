@@ -99,8 +99,8 @@ def counting_last_Tuesdays(col, worksheet):
             if day_of_week(date[1], date[0], date[2]) == 'Tue':
                 # Прибовляем еще 7 дней
                 date[1] = int(date[1]) + 7
-                # Проверка следующий вторник или нет
-                if day_of_week(date[1], date[0], date[2]) != 'Tue' or num_day_month(int(date[1]), int(date[0]), int(date[2])):
+                # Проверка существует следующий вторник или нет
+                if num_day_month(int(date[1]), int(date[0]), int(date[2])):
                     count += 1
         except IndexError:
             pass

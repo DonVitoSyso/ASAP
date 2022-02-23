@@ -35,14 +35,14 @@ def leap_year(year):
         return False
 
 
+# Проверка дня на существование
 def num_day_month(day, month, year):
     # Количество дней в месяце
     num_days = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
     # Делаем корректировку февраля на -1, если високосный год
-    if leap_year(year):
+    if leap_year(year) and month == 2:
         day -= 1
-    if num_days[month-1] >= day:
-        print(day, month, year)
+    if num_days[month-1] < day:
         return True
     else:
         return False
