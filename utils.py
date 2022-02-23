@@ -41,7 +41,7 @@ def num_day_month(day, month, year):
     # Делаем корректировку февраля на -1, если високосный год
     if leap_year(year):
         day -= 1
-    if num_days[month-1] <= day:
+    if num_days[month-1] >= day:
         print(day, month, year)
         return True
     else:
